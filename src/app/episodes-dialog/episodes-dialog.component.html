@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Episodes of {{ character.name }}</h1>
+
+<div mat-dialog-content style="width: 80%">
+  <mat-grid-list cols="1" rowHeight="1:0.1">
+    <mat-grid-tile *ngFor="let episode of character.episode; index as i">
+      <mat-card class="character-card">
+        <mat-card-content>
+          <button
+            mat-button
+            color="accent"
+            [routerLink]="['/episode', episode.id]"
+            matDialogClose
+          >
+            {{ episode.id }}. {{ episode.url }}
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -1,0 +1,50 @@
+<div>
+  <mat-form-field class="filter-input" appearance="fill">
+    <mat-label>Search for character name</mat-label>
+    <input matInput placeholder="Ex. rick sanchez.." [(ngModel)]="searchName" />
+  </mat-form-field>
+</div>
+
+<div
+  class="search-results"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="500"
+  (scrolled)="onScroll()"
+>
+  <mat-grid-list cols="5" gutterSize="0" rowHeight="1:2">
+    <mat-grid-tile
+      *ngFor="let character of characters | characterPipe: searchName"
+    >
+      <mat-card class="character-card">
+        <mat-card-header>
+          <mat-card-title>{{ character.name }} </mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{ character.image }}" />
+        <mat-card-content>
+          <div>
+            <mat-card-subtitle>Status: </mat-card-subtitle>
+            <span>{{ character.status }}</span>
+          </div>
+          <div>
+            <mat-card-subtitle>Gender: </mat-card-subtitle>
+            <span>{{ character.gender }}</span>
+          </div>
+          <div>
+            <mat-card-subtitle>Species: </mat-card-subtitle>
+            <span>{{ character.species }}</span>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="openDialog(character)"
+          >
+            Episodes
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

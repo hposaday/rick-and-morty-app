@@ -1,0 +1,42 @@
+<div>
+  <div>
+    <mat-grid-list cols="2" gutterSize="-400" rowHeight="500px">
+      <mat-grid-tile rowspan="2">
+        <img src="{{ characterData.image }}" />
+      </mat-grid-tile>
+      <mat-grid-tile colspan="1">
+        <h1>{{ characterData.name }}</h1>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="data-container">
+          <p>Status:</p>
+          <p class="character-data-text">{{ characterData.status }}</p>
+        </div>
+        <div class="data-container">
+          <p>Gender:</p>
+          <p class="character-data-text">{{ characterData.gender }}</p>
+        </div>
+        <div class="data-container">
+          <p>Species:</p>
+          <p class="character-data-text">{{ characterData.species }}</p>
+        </div>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <div style="width: 80%; margin-left: 10%">
+    <mat-grid-list cols="2" rowHeight="1:0.1">
+      <mat-grid-tile colspan="2">
+        <h1>Episodes of {{ characterData.name }}</h1>
+      </mat-grid-tile>
+      <mat-grid-tile *ngFor="let episode of characterData.episode; index as i">
+        <button
+          mat-button
+          [routerLink]="['/episode', episode.id]"
+          matDialogClose
+        >
+          {{ episode.id }}. {{ episode.url }}
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

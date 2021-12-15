@@ -1,0 +1,13 @@
+<mat-toolbar color="primary">
+  <img src="./../../assets/toolbar-icon.png" width="70" height="70" />
+  <span class="spacer"></span>
+  <span>Rick & Morty App</span>
+  <span class="spacer"></span>
+  <button
+    *ngFor="let button of menuButtons"
+    [routerLink]="[button.route]"
+    mat-button
+  >
+    {{ button.text }}
+  </button>
+</mat-toolbar>

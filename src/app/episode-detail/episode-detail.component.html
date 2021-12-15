@@ -1,0 +1,22 @@
+<div class="episode-container">
+  <h1>{{ episodeData.episode }} {{ episodeData.name }}</h1>
+  <p>{{ episodeData.air_date }}</p>
+
+  <h1>Characters of {{ episodeData.name }}</h1>
+
+  <div style="width: 80%">
+    <mat-grid-list cols="2" rowHeight="1:0.1">
+      <mat-grid-tile
+        *ngFor="let character of episodeData.characters; index as i"
+      >
+        <button
+          mat-button
+          [routerLink]="['/character', character.id]"
+          matDialogClose
+        >
+          {{ character.id }}. {{ character.url }}
+        </button>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

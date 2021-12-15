@@ -1,0 +1,33 @@
+<div>
+  <mat-form-field class="filter-input" appearance="fill">
+    <mat-label>Search for episode name</mat-label>
+    <input matInput placeholder="Ex. rick sanchez.." [(ngModel)]="searchName" />
+  </mat-form-field>
+</div>
+
+<div
+  class="search-results"
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="500"
+  (scrolled)="onScroll()"
+>
+  <mat-grid-list cols="3" gutterSize="10" rowHeight="200px">
+    <mat-grid-tile *ngFor="let episode of episodes | characterPipe: searchName">
+      <mat-card class="character-card">
+        <h2>{{ episode.episode }} - {{ episode.name }}</h2>
+        <mat-card-content>
+          <div>
+            <mat-card-subtitle>Release date: </mat-card-subtitle>
+            <span>{{ episode.air_date }}</span>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-flat-button color="primary" (click)="openDialog(episode)">
+            Characters
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
