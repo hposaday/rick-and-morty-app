@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
       route: 'characters',
     },
     {
-      text: 'Episode',
+      text: 'Episodes',
       route: 'episodes',
     },
   ];
